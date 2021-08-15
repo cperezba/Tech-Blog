@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 
 const signUp = async (event) => {
   event.preventDefault();
@@ -9,26 +11,29 @@ const signUp = async (event) => {
   console.log(username1);
   console.log(password1);
 
-  if (username && password) {
-    const response = await fetch("/signUp", {
-      method: "POST",
-      body: JSON.stringify({
-        username: username1,
-        password: password1
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
+  try {
+    if (username1 && password1) {
+      const response = await fetch("/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          username: username1,
+          password: password1
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+  } catch (err) {
+    res.status(500).json(err);
   }
-
-  if (response.ok) {
-    document.location.replace("/");
-    alert("Welcome to TechBlog!");
-  } else {
-    alert("Failed to sign up!");
-  }
-
 }
 
+
+// if (response.ok) {
+//   document.location.replace("/");
+//   alert("Welcome to TechBlog!");
+// } else {
+//   alert("Failed to sign up!");
+// }
 
 
 

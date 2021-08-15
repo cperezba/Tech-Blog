@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const homepage = require('./homepage');
-const signUp = require('./signUp');
+const signUp = require('./signup');
 
 
 
 router.use("/", homepage);
-router.use("/signUp", signUp);
+router.use("/signup", signUp);
 
 
 
