@@ -1,3 +1,3 @@
-DROP IF EXISTS techsite_db;
+DROP DATABASE IF EXISTS techsite_db;
 
 CREATE DATABASE techsite_db;

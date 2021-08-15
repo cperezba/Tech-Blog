@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
-        res.json("Your new webpage!")
+        res.render('test');
 
 
     } catch (err) {
