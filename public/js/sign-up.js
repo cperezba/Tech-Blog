@@ -1,6 +1,3 @@
-const bcrypt = require('bcrypt');
-
-
 const signUp = async (event) => {
   event.preventDefault();
 
