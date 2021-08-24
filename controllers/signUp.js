@@ -19,7 +19,14 @@ router.post('/', async (req, res) => {
             username: req.body.username,
             password: hashedPassword,
         });
-        res.status(200).json("Success!")
+
+        req.session.save(() => {
+            req.session.username = user.username;
+            req.session.id = user.id;
+            req.session.loggedIn = true;
+        });
+
+        res.status(200).json(user);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
