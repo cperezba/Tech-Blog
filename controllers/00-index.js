@@ -9,6 +9,7 @@ const dashboard = require('./dashboard');
 router.use("/", homepage);
 router.use("/api", api)
 router.use("/signup", signUp);
+// router.use("/signout", signOut);
 router.use("/dashboard", dashboard);
 
 
