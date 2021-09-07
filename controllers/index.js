@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const homepage = require('./homepage-route');
-const signup = require('./signup');
+const signup = require('./signUp');
 const api = require('./api/index');
 const dashboard = require('./dashboard');
 
