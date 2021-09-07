@@ -3,17 +3,17 @@ const Blog = require("./blog");
 const Content = require("./content");
 
 
-User.hasMany(Blog, {
-    foreignKey: 'id'
-});
+// User.hasMany(Blog, {
+//     foreignKey: 'id'
+// });
 
-User.hasMany(Content, {
-    foreignKey: 'id',
-    onDelete: 'cascade'
-});
+// User.hasMany(Content, {
+//     foreignKey: 'id',
+//     onDelete: 'cascade'
+// });
 
 Blog.belongsTo(User, {
-    foreignKey: 'id',
+    foreignKey: 'user_id',
     onDelete: 'cascade'
 });
 
@@ -24,14 +24,14 @@ Blog.hasMany(Content, {
 
 
 Content.belongsTo(User, {
-    foreignKey: 'id',
+    foreignKey: 'user_id',
     onDelete: 'cascade'
 });
 
-Content.belongsTo(Blog, {
-    foreignKey: 'id',
-    onDelete: 'cascade'
-});
+// Content.belongsTo(Blog, {
+//     foreignKey: 'id',
+//     onDelete: 'cascade'
+// });
 
 
 

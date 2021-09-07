@@ -1,1 +1,23 @@
-<h1>Test #1</h1>
+<h2>Welcome to the TechBlog!</h2>
+
+{{> blogEntry}}
+
+{{!-- 
+{{#each content}}
+<section class="container">
+    <div class="card">
+        <title class="card-title">{{content.title}}</title>
+        <p class="card-body">{{content.content}}</p>
+    </div>
+</section>
+
+{{/each}}
+
+ --}}
+
+
+
+{{> blogContent }}
+
+
+<script src="/js/blogEntryHandler.js"></script>

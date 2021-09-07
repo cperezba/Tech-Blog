@@ -2,17 +2,25 @@ const router = require('express').Router();
 const { Blog } = require('../models');
 const withAuth = require('../utils/auth');
 
+
+
 router.get('/', withAuth, async (req, res) => {
     try {
-        const postData = await Blog.findAll();
-        console.log(postData);
+        if (req.session.loggedIn === true) {
+            const postData = await Blog.findAll({
+                where: {
+                    user_id: req.session.userID,
+                },
+            });
 
-        const posts = postData.map((post) => post.get({ plain: true }));
-        console.log("Posts", posts);
+            const posts = postData.map((post) => post.get({ plain: true }));
 
-        res.render('dashboard', {
-            posts
-        });
+            res.render('dashboard', {
+                posts
+            });
+        } else {
+            res.redirect('/signup');
+        }
     } catch (err) {
         res.status(500).json(err);
     }
@@ -26,6 +34,7 @@ router.post('/', withAuth, async (req, res) => {
         const userData = Blog.create({
             title: req.body.title,
             content: req.body.content,
+            user_id: req.session.userID
         });
         console.log(userData);
         res.status(200).json(userData);
